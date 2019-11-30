@@ -1,27 +1,34 @@
 import React, {Component} from 'react'
 import Estoria from './Estoria'
+import EstoriaForm from './EstoriaForm'
 
 export default class Taskboard extends Component {
-    _getEstorias() {
-        const estorias = [
-            {
-                id: 1,
-                titulo: "Contratar Seguro",
-                descricao: "Eu como usuario, gostaria de contratar um seguro",
-                pontos: 20                
-            },
-            {
-                id: 2,
-                titulo: "Renovar Seguro",
-                descricao: "Eu como usuario, gostaria de renovar meu seguro",
-                pontos: 10                
-            }
-        ]
+    constructor(props) {
+        super(props)
+        this.state = {
+            estorias: [
+                {
+                    id: 1,
+                    titulo: "Contratar Seguro",
+                    descricao: "Eu como usuario, gostaria de contratar um seguro",
+                    pontos: 20                
+                },
+                {
+                    id: 2,
+                    titulo: "Renovar Seguro",
+                    descricao: "Eu como usuario, gostaria de renovar meu seguro",
+                    pontos: 10                
+                }
+            ] 
+        }
+    }
 
-        return estorias.map(estoria => 
+    _getEstorias() {
+        return this.state.estorias.map(estoria => 
             <Estoria 
                 titulo={estoria.titulo} descricao={estoria.descricao}
-                pontos={estoria.pontos} key={estoria.id} />)
+                pontos={estoria.pontos} key={estoria.id} 
+                />)
     }
 
     _getTitulo(total) {
@@ -32,6 +39,13 @@ export default class Taskboard extends Component {
         } else {
             return `${total} estórias`
         }
+    }
+
+    _adicionarEstoria(estoria) {
+        estoria.id = this.state.estorias.length + 1
+        this.setState({
+            estorias: this.state.estorias.concat([estoria])
+        })
     }
     
     render() {
@@ -44,7 +58,7 @@ export default class Taskboard extends Component {
                 <h1 className="header center orange-text">Estórias</h1>
                 <h3>{titulo}</h3>
                     {estorias}
-                />
+                <EstoriaForm adicionarEstoria={this._adicionarEstoria.bind(this)} />
                 
                 </div>
             </div>
