@@ -1,26 +1,27 @@
 import React, {Component} from 'react'
+import axios from 'axios'
 import Estoria from './Estoria'
 import EstoriaForm from './EstoriaForm'
+
+const API_URL = 'http://localhost:3004/estorias/'
 
 export default class Taskboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            estorias: [
-                {
-                    id: 1,
-                    titulo: "Contratar Seguro",
-                    descricao: "Eu como usuario, gostaria de contratar um seguro",
-                    pontos: 20                
-                },
-                {
-                    id: 2,
-                    titulo: "Renovar Seguro",
-                    descricao: "Eu como usuario, gostaria de renovar meu seguro",
-                    pontos: 10                
-                }
-            ] 
+            estorias: [] 
         }
+    }
+
+    componentDidMount() {
+        this._buscarEstorias()
+    }
+
+    _buscarEstorias() {
+        axios.get(API_URL)
+            .then(response => {
+                this.setState({estorias: response.data})
+            })
     }
 
     _getEstorias() {
