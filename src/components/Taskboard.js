@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import Estoria from './Estoria'
+import Estoria from './EstoriaHook'
 import EstoriaForm from './EstoriaForm'
 
 const API_URL = 'http://localhost:3004/estorias/'
@@ -24,11 +24,17 @@ export default class Taskboard extends Component {
             })
     }
 
+    _excluirEstoria(estoriaId) {
+        axios.delete(API_URL + estoriaId)
+            .then(resp => this._buscarEstorias())
+    }
+
     _getEstorias() {
         return this.state.estorias.map(estoria => 
             <Estoria 
                 titulo={estoria.titulo} descricao={estoria.descricao}
-                pontos={estoria.pontos} key={estoria.id} 
+                pontos={estoria.pontos} id={estoria.id} key={estoria.id} 
+                onDelete={this._excluirEstoria.bind(this)}
                 />)
     }
 
@@ -43,10 +49,8 @@ export default class Taskboard extends Component {
     }
 
     _adicionarEstoria(estoria) {
-        estoria.id = this.state.estorias.length + 1
-        this.setState({
-            estorias: this.state.estorias.concat([estoria])
-        })
+        axios.post(API_URL, estoria)
+            .then(resp => this._buscarEstorias())
     }
     
     render() {
