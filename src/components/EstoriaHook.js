@@ -30,8 +30,8 @@ function EstoriaHook(props) {
                         {descricao}
                     </div>
                     <div className="card-action">
-                        <a className="right" href="#" onClick={_handleClick}>{textoBotao}</a>
-                        <a className="right" href="#" onClick={_handleDelete}>EXCLUIR</a>
+                        <a className="right" href onClick={_handleClick}>{textoBotao}</a>
+                        <a className="right" href onClick={_handleDelete}>EXCLUIR</a>
                         <br />
                     </div>
                 </div>

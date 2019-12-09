@@ -6,6 +6,7 @@ import Topo from './components/Topo'
 import Rodape from './components/Rodape'
 import Taskboard from './components/Taskboard'
 import About from './components/About'
+import Devs from './components/Devs'
 
 import { Switch, Route } from 'react-router-dom'
 
@@ -15,6 +16,7 @@ function App() {
       <Topo />
       <Switch>
         <Route exact path="/" component={Taskboard} />
+        <Route path="/devs" component={Devs} />
         <Route path="/about" component={About} />
       </Switch>
       <Rodape />
