@@ -19,6 +19,16 @@
       "id": "regis-simao",
       "nome": "Regis",
       "sobrenome": "Simao"
+    },
+    {
+      "nome": "João",
+      "sobrenome": "Mareiro",
+      "id": "João-Mareiro"
+    },
+    {
+      "nome": "Felipe",
+      "sobrenome": "Santos",
+      "id": "felipe-santos"
     }
   ],
   "estorias": [

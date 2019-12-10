@@ -5,7 +5,7 @@ function Topo() {
     return (
         <nav className="indigo darken-4" role="navigation">
             <div className="nav-wrapper container">
-                <a id="logo-container" href className="brand-logo">React Taskboard</a>
+                <span id="logo-container" className="brand-logo">React Taskboard</span>
                 <ul className="right">
                     <li><Link to="/">Taskboard</Link></li>
                     <li><Link to="/devs">Devs</Link></li>
