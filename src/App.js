@@ -8,6 +8,7 @@ import Taskboard from './components/Taskboard'
 import About from './components/About'
 import Devs from './components/Devs'
 import ManageDev from './components/ManageDev'
+import Messages from './components/Messages'
 
 import { Switch, Route } from 'react-router-dom'
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/about" component={About} />
       </Switch>
       <Rodape />
+      <Messages />
     </div>
   );
 }

@@ -2,7 +2,7 @@
   "devs": [
     {
       "id": "marcelo-oliveira",
-      "nome": "Marcelo",
+      "nome": "Marcelão",
       "sobrenome": "Oliveira"
     },
     {
@@ -29,6 +29,11 @@
       "nome": "Felipe",
       "sobrenome": "Santos",
       "id": "felipe-santos"
+    },
+    {
+      "nome": "Eduardo ",
+      "sobrenome": "Oliveira",
+      "id": "eduardo -oliveira"
     }
   ],
   "estorias": [

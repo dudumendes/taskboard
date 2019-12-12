@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import Estoria from './EstoriaHook'
+import Estoria from './Estoria'
 import EstoriaForm from './EstoriaForm'
 
 const API_URL = 'http://localhost:3004/estorias/'

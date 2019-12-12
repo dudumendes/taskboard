@@ -1,17 +1,35 @@
 import * as types from './actionTypes'
-import {reset as resetForm} from 'redux-form'
+import {reset as resetForm, initialize} from 'redux-form'
 import axios from 'axios'
+import { toastr } from 'react-redux-toastr'
+
 const URL = "http://localhost:3004/devs"
 
 export function createDev(dev) {
-  dev.id = generateId(dev)
+  let method = "put"
+  let id = dev.id
+
+  if (!dev.id) {
+    dev.id = generateId(dev)
+    method = "post"
+    id = ""
+  }
+  
   return dispatch => {
-    axios.post(URL, dev)
+    axios[method](`${URL}/${id}`, dev)
       .then( request => {
+          toastr.success('Operacao realizada com sucesso')
           dispatch(resetForm('devForm'))
           dispatch({type: types.CREATE_DEV_SUCCESS})
       })
    }
+}
+
+export function loadDev(dev) {
+  return dispatch => {
+    dispatch(manageDev(false))
+    dispatch(initialize('devForm', dev))
+  }  
 }
 
 export function loadDevs() {
